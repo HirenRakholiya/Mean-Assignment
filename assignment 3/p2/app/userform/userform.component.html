@@ -1,0 +1,44 @@
+<p>userform works!</p>
+<form [formGroup]="userform" (ngSubmit)="userformdata()">
+    Name:<input type="text" name="name" required formControlName="name" ngModel /><br />
+    <span *ngIf="userform.controls['name'].errors && userform.controls['name'].touched &&
+     userform.controls['name'].dirty" style="color:red">Enter name</span><br />
+
+    Gender:
+    Male<input type="radio" name="gender" checked value="male" formControlName="gender">
+    Female<input type="radio" name="gender" value="female" formControlName="gender"><br />
+    <span *ngIf="userform.controls['gender'].errors && userform.controls['gender'].touched &&
+     userform.controls['gender'].dirty" style="color:red">Select Gender</span><br />
+
+    Email :<input type="text" name="email" required formControlName="email" ngModel /><br />
+    <span *ngIf="userform.controls['email'].errors && userform.controls['email'].touched &&
+     userform.controls['email'].dirty" style="color:red">Enter Email</span><br />
+
+    Mobile No:<input type="text" name="mobileno" required formControlName="mobileno" ngModel /><br />
+    <span *ngIf="userform.controls['mobileno'].errors && userform.controls['mobileno'].touched &&
+     userform.controls['mobileno'].dirty" style="color:red">Enter Mobile No</span><br />
+
+    <select>
+        <option name="city" *ngFor="let item of a1" [value]=item formControlName="city" ngModel></option>
+    </select>
+    <br/>
+
+    <button [disabled]="userform.invalid">Submit</button>
+</form>
+
+<table border="1px">
+    <tr>
+        <td>Name</td>
+        <td>Gender</td>
+        <td>Email</td>
+        <td>Mobile No</td>
+        <td>City</td>
+    </tr>
+    <tr>
+        <td>{{data.name}}</td>
+        <td>{{data.gender}}</td>
+        <td>{{data.email}}</td>
+        <td>{{data.mobileno}}</td>
+        <td>{{data.city}}</td>
+    </tr>
+</table>
